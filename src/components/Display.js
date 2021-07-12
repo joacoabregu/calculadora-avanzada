@@ -1,8 +1,9 @@
 
-function Display() {
+function Display(props) {
+    
     return (
         <>
-            <input type="number" value={0} />
+            <input type="text" value={props.value}  />
             <button type="button">Clear</button>
         </>
     )

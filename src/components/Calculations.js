@@ -1,7 +1,7 @@
-function Calculations() {
+function Calculations(props) {
     return (
         <>
-            <p>Suma: 0</p>
+            <p>{props.text}: {props.value}</p>
         </>
     )
 }
