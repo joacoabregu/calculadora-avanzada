@@ -6,10 +6,18 @@ import {valueOne, valueTwo} from './state/action';
 
 function App(props) {
   function handleValueOne(e){
-    props.dispatch(valueOne(e.target.value))
+    if(e.target.localName === 'button'){
+      props.dispatch(valueOne(0))
+    }else{
+      props.dispatch(valueOne(e.target.value))
+    }   
   }
   function handleValueTwo(e){
-    props.dispatch(valueTwo(e.target.value))
+    if(e.target.localName === 'button'){
+      props.dispatch(valueTwo(0))
+    }else{
+      props.dispatch(valueTwo(e.target.value))
+    }     
   }
   let results = [
     {text: 'Suma', value: props.add},
