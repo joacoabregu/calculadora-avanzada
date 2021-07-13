@@ -1,9 +1,7 @@
-
-function Display(props) {
-    
+function Display(props) {  
     return (
         <>
-            <input type="text" value={props.value}  />
+            <input type="text" value={props.value} onChange={props.handleValue} />
             <button type="button">Clear</button>
         </>
     )
