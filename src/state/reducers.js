@@ -13,15 +13,15 @@ let initialState = {
 }
 
 function calculations(valueOne, valueTwo){
-    let sum = valueOne + valueTwo;
-    let substract = valueOne - valueTwo;
-    let multiply = valueOne * valueTwo;
-    let divide = valueOne / valueTwo;
-    let pow = Math.pow(valueOne, valueTwo);
+    let add = parseFloat(valueOne) + parseFloat(valueTwo);
+    let substract = parseFloat(valueOne) - parseFloat(valueTwo);
+    let multiply = parseFloat(valueOne) * parseFloat(valueTwo); 
+    let divide = parseFloat(valueOne) / parseFloat(valueTwo);
+    let pow = Math.pow(parseFloat(valueOne),parseFloat(valueTwo));
     //let sqrt = Math.sqrt
-    let hypot = Math.hypot(valueOne, valueTwo); 
+    let hypot = Math.hypot(parseFloat(valueOne), parseFloat(valueTwo)); 
 
-    return {sum, substract, multiply, divide, pow, hypot}
+    return {add, substract, multiply, divide, pow, hypot}
 }
 
 
@@ -33,7 +33,7 @@ export default function calculadoraApp(state = initialState, action){
             return {...state, valueOne: action.payload, ...results}
         case VALUE_TWO:
             results = calculations(state.valueOne, action.payload);
-            return {...state, valueTwo: action.payload}
+            return {...state, valueTwo: action.payload, ...results}
 
         default:
             return state;
