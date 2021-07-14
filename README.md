@@ -1,5 +1,8 @@
 # Material consultado
  [Manejo input element](https://es.reactjs.org/docs/forms.html)
+ [Tutorial React Beautiful DnD](https://www.youtube.com/watch?v=bZsMWorjtFI&list=WL&index=14)
+ [Refs and the Dom](https://reactjs.org/docs/refs-and-the-dom.html)
+ [Using Inner Ref](https://github.com/atlassian/react-beautiful-dnd/blob/master/docs/guides/using-inner-ref.md)
 
 # Getting Started with Create React App
 
