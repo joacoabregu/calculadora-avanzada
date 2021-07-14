@@ -3,6 +3,7 @@ import Display from './components/Display';
 import Calculations from './components/Calculations';
 import {connect} from 'react-redux';
 import {valueOne, valueTwo} from './state/action';
+import {DragDropContext, Droppable, Draggable} from 'react-beautiful-dnd'
 
 function App(props) {
   function handleValueOne(e){
@@ -45,11 +46,22 @@ function App(props) {
       <header className="App-header">
         <h1>Calculadora Avanzada</h1>
       </header>
-      <Display value={props.valueOne} title="Valor Uno" handleValue={handleValueOne}/>
-      <Display value={props.valueTwo} title="Valor Dos" handleValue={handleValueTwo}/>
-      <div className="container-results">
-        {results.map((result , index) => <Calculations text={result.text} value={result.value}  key={index}/>) }
-      </div>
+      <DragDropContext onDragEnd={(result) => console.log(result)} >
+        <Display value={props.valueOne} title="Valor Uno" handleValue={handleValueOne}/>
+        <Display value={props.valueTwo} title="Valor Dos" handleValue={handleValueTwo}/>
+        <Droppable droppableId="results" >
+          {(droppableProvided) => (<div {...droppableProvided.droppableProps} ref={droppableProvided.innerRef} className="container-results">
+            {results.map((result , index) => (
+              <Draggable  key={index} draggableId={index.toString()} index={index} >
+                {(draggableProvided) => (
+                  <Calculations {...draggableProvided.draggableProps} ref={draggableProvided.innerRef} {...draggableProvided.dragHandleProps} text={result.text} value={result.value} />
+                )}
+              </Draggable>
+            )) }
+            {droppableProvided.placeholder}
+          </div>)}
+        </Droppable>
+      </DragDropContext>
     </div>
   );
 }
