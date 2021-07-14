@@ -6,6 +6,12 @@ import {valueOne, valueTwo} from './state/action';
 
 function App(props) {
   function handleValueOne(e){
+    if(isNaN(e.target.value)){
+      props.dispatch(valueOne(0))
+      alert('Ingresar número válido')
+      console.log(e)
+      return;
+    }
     if(e.target.localName === 'button'){
       props.dispatch(valueOne(0))
     }else{
@@ -13,6 +19,11 @@ function App(props) {
     }   
   }
   function handleValueTwo(e){
+    if(isNaN(e.target.value)){
+      props.dispatch(valueTwo(0))
+      alert('Ingresar número válido')
+      return;
+    }
     if(e.target.localName === 'button'){
       props.dispatch(valueTwo(0))
     }else{
