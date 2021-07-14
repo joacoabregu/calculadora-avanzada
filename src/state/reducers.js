@@ -8,7 +8,8 @@ let initialState = {
     multiply: 0,
     divide: 0,
     pow: 0,
-    sqrt: 0,
+    sqrt1: 0,
+    sqrt2: 0,
     hypot: 0
 }
 
@@ -18,10 +19,11 @@ function calculations(valueOne, valueTwo){
     let multiply = parseFloat(valueOne) * parseFloat(valueTwo); 
     let divide = parseFloat(valueOne) / parseFloat(valueTwo);
     let pow = Math.pow(parseFloat(valueOne),parseFloat(valueTwo));
-    //let sqrt = Math.sqrt
+    let sqrt1 = Math.sqrt(valueOne);
+    let sqrt2 = Math.sqrt(valueTwo);
     let hypot = Math.hypot(parseFloat(valueOne), parseFloat(valueTwo)); 
 
-    return {add, substract, multiply, divide, pow, hypot}
+    return {add, substract, multiply, divide, pow, sqrt1, sqrt2, hypot}
 }
 
 

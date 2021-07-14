@@ -25,6 +25,8 @@ function App(props) {
     {text: 'Multiplicación', value: props.multiply},
     {text: 'División', value: props.divide},
     {text: 'Potencia', value: props.pow},
+    {text: 'Raíz Cuadrada Valor Uno', value: props.sqrt1},
+    {text: 'Raíz Cuadrada Valor Dos', value: props.sqrt2},
     {text: 'Hipotenusa', value: props.hypot}
   ];
   return (
@@ -50,6 +52,8 @@ function mapStateToProps(state) {
       multiply: state.multiply,
       divide: state.divide,
       pow: state.pow,
+      sqrt1: state.sqrt1,
+      sqrt2: state.sqrt2,
       hypot: state.hypot,
   }
 }
