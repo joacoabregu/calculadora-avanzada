@@ -9,6 +9,10 @@ import calculadoraApp from './state/reducers';
 
 let store = createStore(calculadoraApp);
 
+store.subscribe(() =>
+  console.log(store.getState())
+)
+
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>

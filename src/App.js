@@ -32,9 +32,11 @@ function App(props) {
       <header className="App-header">
         <h1>Calculadora Avanzada</h1>
       </header>
-      <Display value={props.valueOne} handleValue={handleValueOne}/>
-      <Display value={props.valueTwo} handleValue={handleValueTwo}/>
-      {results.map((result , index) => <Calculations text={result.text} value={result.value}  key={index}/>) }
+      <Display value={props.valueOne} title="Valor Uno" handleValue={handleValueOne}/>
+      <Display value={props.valueTwo} title="Valor Dos" handleValue={handleValueTwo}/>
+      <div className="container-results">
+        {results.map((result , index) => <Calculations text={result.text} value={result.value}  key={index}/>) }
+      </div>
     </div>
   );
 }

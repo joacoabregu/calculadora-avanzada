@@ -1,7 +1,7 @@
 function Calculations(props) {
     return (
         <>
-            <p>{props.text}: {props.value}</p>
+            <p className="results">{props.text}: {props.value}</p>
         </>
     )
 }
