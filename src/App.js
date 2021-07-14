@@ -54,7 +54,7 @@ function App(props) {
             {results.map((result , index) => (
               <Draggable  key={index} draggableId={index.toString()} index={index} >
                 {(draggableProvided) => (
-                  <Calculations {...draggableProvided.draggableProps} ref={draggableProvided.innerRef} {...draggableProvided.dragHandleProps} text={result.text} value={result.value} />
+                  <Calculations draggableProvided={draggableProvided} innerRef={draggableProvided.innerRef}  text={result.text} value={result.value} />
                 )}
               </Draggable>
             )) }

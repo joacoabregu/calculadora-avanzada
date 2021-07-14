@@ -1,7 +1,8 @@
 function Calculations(props) {
+    const { draggableProvided, innerRef } = props;
     return (
         <>
-            <p className="results">{props.text}: {props.value}</p>
+            <p className="results" {...draggableProvided.draggableProps} {...draggableProvided.dragHandleProps} ref={innerRef}>{props.text}: {props.value}</p>
         </>
     )
 }
