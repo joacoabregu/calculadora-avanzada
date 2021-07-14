@@ -41,12 +41,32 @@ function App(props) {
     {text: 'Raíz Cuadrada Valor Dos', value: props.sqrt2},
     {text: 'Hipotenusa', value: props.hypot}
   ];
+
+  const reorder = (list, startIndex, endIndex) => {
+    const result = [...list];
+    const [removed] = result.splice(startIndex, 1);
+    result.splice(endIndex, 0, removed);
+
+    return result;
+  }
+
   return (
     <div className="App">
       <header className="App-header">
         <h1>Calculadora Avanzada</h1>
       </header>
-      <DragDropContext onDragEnd={(result) => console.log(result)} >
+      <DragDropContext onDragEnd={(result) => {
+        const {source, destination} = result;
+        if(!destination){
+          return;
+        }
+        if(source.index === destination.index && source.droppableId === destination.droppableId){
+          return;
+        }
+
+        results = reorder(results, source.index, destination.index);
+
+      }} >
         <Display value={props.valueOne} title="Valor Uno" handleValue={handleValueOne}/>
         <Display value={props.valueTwo} title="Valor Dos" handleValue={handleValueTwo}/>
         <Droppable droppableId="results" >
