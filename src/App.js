@@ -1,18 +1,27 @@
 import './App.css';
 import Display from './components/Display';
 import Calculations from './components/Calculations';
+import NumberButtons from './components/NumberButtons';
 import {connect} from 'react-redux';
 import {valueOne, valueTwo} from './state/action';
 import {DragDropContext, Droppable, Draggable} from 'react-beautiful-dnd'
+import {useEffect} from 'react'
 
 function App(props) {
-  function handleValueOne(e){
-    if(isNaN(e.target.value)){
+
+  useEffect(() => {
+    if(isNaN(props.valueOne)){
       props.dispatch(valueOne(0))
       alert('Ingresar número válido')
-      console.log(e)
       return;
     }
+    if(isNaN(props.valueTwo)){
+      props.dispatch(valueTwo(0))
+      alert('Ingresar número válido')
+      return;
+    }
+  });
+  function handleValueOne(e){
     if(e.target.localName === 'button'){
       props.dispatch(valueOne(0))
     }else{
@@ -20,11 +29,6 @@ function App(props) {
     }   
   }
   function handleValueTwo(e){
-    if(isNaN(e.target.value)){
-      props.dispatch(valueTwo(0))
-      alert('Ingresar número válido')
-      return;
-    }
     if(e.target.localName === 'button'){
       props.dispatch(valueTwo(0))
     }else{
@@ -32,17 +36,7 @@ function App(props) {
     }     
   }
 
-  function addValue(e){
-    console.log(e.target.innerHTML);
-      if(props.focus === 1){
-        let value = props.valueOne.toString() + e.target.innerHTML;
-        props.dispatch(valueOne(value))
-      }
-      if(props.focus === 2){
-        let value = props.valueTwo.toString() + e.target.innerHTML;
-        props.dispatch(valueTwo(value))
-      }
-  }
+  
 
   
   let results = [
@@ -84,7 +78,7 @@ function App(props) {
         <Display value={props.valueOne} title="Valor Uno" handleValue={handleValueOne} />
         <Display value={props.valueTwo} title="Valor Dos" handleValue={handleValueTwo}/>
         <div>
-          <button onClick={addValue}>1</button>
+          <NumberButtons />
         </div>
         <Droppable droppableId="results" >
           {(droppableProvided) => (<div {...droppableProvided.droppableProps} ref={droppableProvided.innerRef} className="container-results">
