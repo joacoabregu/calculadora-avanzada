@@ -1,5 +1,5 @@
 import {connect} from 'react-redux';
-import {focus} from './state/action';
+import {focus} from '../state/action';
 
 function Display(props) { 
     function handleFocus(e){
