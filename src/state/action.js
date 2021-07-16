@@ -1,4 +1,4 @@
-import {VALUE_ONE, VALUE_TWO} from "./actionTypes";
+import {VALUE_ONE, VALUE_TWO, FOCUS} from "./actionTypes";
 export function valueOne(payload) {
     return {
         type: VALUE_ONE,
@@ -13,3 +13,9 @@ export function valueTwo(payload) {
     }
 }
 
+export function focus(payload) {
+    return {
+        type: FOCUS,
+        payload       
+    }
+}

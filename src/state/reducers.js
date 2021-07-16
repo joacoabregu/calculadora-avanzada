@@ -1,8 +1,9 @@
-import {VALUE_ONE, VALUE_TWO} from "./actionTypes";
+import {VALUE_ONE, VALUE_TWO, FOCUS} from "./actionTypes";
 
 let initialState = {
     valueOne: 0,
     valueTwo: 0,
+    focus: 1,
     add: 0,
     substract: 0,
     multiply: 0,
@@ -36,6 +37,8 @@ export default function calculadoraApp(state = initialState, action){
         case VALUE_TWO:
             results = calculations(state.valueOne, action.payload);
             return {...state, valueTwo: action.payload, ...results}
+        case FOCUS:
+            return {...state, focus: action.payload}
 
         default:
             return state;
