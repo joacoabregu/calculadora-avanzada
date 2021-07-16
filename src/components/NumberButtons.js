@@ -29,7 +29,7 @@ function NumberButtons(props){
             <button onClick={addValue}>8</button>
             <button onClick={addValue}>9</button>
             <button onClick={addValue}>0</button>
-            <button onClick={addValue}>,</button>
+            <button onClick={addValue}>.</button>
 
         </div>
     )
