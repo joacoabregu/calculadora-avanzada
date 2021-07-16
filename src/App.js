@@ -31,6 +31,20 @@ function App(props) {
       props.dispatch(valueTwo(e.target.value))
     }     
   }
+
+  function addValue(e){
+    console.log(e.target.innerHTML);
+      if(props.focus === 1){
+        let value = props.valueOne.toString() + e.target.innerHTML;
+        props.dispatch(valueOne(value))
+      }
+      if(props.focus === 2){
+        let value = props.valueTwo.toString() + e.target.innerHTML;
+        props.dispatch(valueTwo(value))
+      }
+  }
+
+  
   let results = [
     {text: 'Suma', value: props.add},
     {text: 'Resta', value: props.substract},
@@ -67,8 +81,11 @@ function App(props) {
         results = reorder(results, source.index, destination.index);
 
       }} >
-        <Display value={props.valueOne} title="Valor Uno" handleValue={handleValueOne}/>
+        <Display value={props.valueOne} title="Valor Uno" handleValue={handleValueOne} />
         <Display value={props.valueTwo} title="Valor Dos" handleValue={handleValueTwo}/>
+        <div>
+          <button onClick={addValue}>1</button>
+        </div>
         <Droppable droppableId="results" >
           {(droppableProvided) => (<div {...droppableProvided.droppableProps} ref={droppableProvided.innerRef} className="container-results">
             {results.map((result , index) => (
@@ -90,6 +107,7 @@ function mapStateToProps(state) {
   return {
       valueOne: state.valueOne,
       valueTwo: state.valueTwo,
+      focus: state.focus,
       add: state.add,
       substract: state.substract,
       multiply: state.multiply,
@@ -98,6 +116,7 @@ function mapStateToProps(state) {
       sqrt1: state.sqrt1,
       sqrt2: state.sqrt2,
       hypot: state.hypot,
+
   }
 }
 
