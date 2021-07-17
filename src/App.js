@@ -10,18 +10,19 @@ import {useEffect} from 'react'
 function App(props) {
 
   useEffect(() => {
-    if(isNaN(props.valueOne)){
+    if(isNaN(props.valueOne) || props.valueOne === '' ){
       props.dispatch(valueOne(0))
       alert('Ingresar número válido')
       return;
     }
-    if(isNaN(props.valueTwo)){
+    if(isNaN(props.valueTwo) || props.valueTwo === ''){
       props.dispatch(valueTwo(0))
       alert('Ingresar número válido')
       return;
     }
   });
   function handleValueOne(e){
+    console.log(e.target.value);
     if(e.target.localName === 'button'){
       props.dispatch(valueOne(0))
     }else{
@@ -36,10 +37,7 @@ function App(props) {
     }     
   }
 
-  
-
-  
-  let results = [
+    let results = [
     {text: 'Suma', value: props.add},
     {text: 'Resta', value: props.substract},
     {text: 'Multiplicación', value: props.multiply},
@@ -77,11 +75,12 @@ function App(props) {
       }} >
         <Display value={props.valueOne} title="Valor Uno" handleValue={handleValueOne} />
         <Display value={props.valueTwo} title="Valor Dos" handleValue={handleValueTwo}/>
-        <div>
-          <NumberButtons />
-        </div>
+        
+        <NumberButtons />
+        
         <Droppable droppableId="results" >
           {(droppableProvided) => (<div {...droppableProvided.droppableProps} ref={droppableProvided.innerRef} className="container-results">
+            <h1>Resultados:</h1>
             {results.map((result , index) => (
               <Draggable  key={index} draggableId={index.toString()} index={index} >
                 {(draggableProvided) => (
