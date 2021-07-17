@@ -18,19 +18,10 @@ function NumberButtons(props){
           }
       }
     return (
-        <div>
-            <button onClick={addValue}>1</button>
-            <button onClick={addValue}>2</button>
-            <button onClick={addValue}>3</button>
-            <button onClick={addValue}>4</button>
-            <button onClick={addValue}>5</button>
-            <button onClick={addValue}>6</button>
-            <button onClick={addValue}>7</button>
-            <button onClick={addValue}>8</button>
-            <button onClick={addValue}>9</button>
-            <button onClick={addValue}>0</button>
-            <button onClick={addValue}>.</button>
-
+        <div className="buttons">
+            {[1, 2, 3, 4, 5, 6, 7, 8, 9, 0, "."].map((v) => {
+                return <button onClick={addValue} className="button">{v}</button>
+            })}
         </div>
     )
 }
